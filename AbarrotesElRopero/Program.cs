@@ -13,7 +13,7 @@ namespace AbarrotesElRopero
             ServiciosCliente serviciocliente = new();//SE INSTANCIA LOS SERVICIOS DEL CLIENTE
 
 
-          
+            
 
 
 

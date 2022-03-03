@@ -8,11 +8,12 @@ namespace AbarrotesElRopero
 {
     internal class ServiciosCliente
     {//ACA VA TODAS LAS ACCIONES QUE TIENE EL CLIENTE COMO :CREAR , BUSCAR, ETC..
-        Cliente cliente = new();
+
         List<Cliente> listaCliente = new();//instancia lista tipo objeto
 
         public void CrearCliente()
         {
+            Cliente cliente = new();
             Console.WriteLine("Ingrese el ID del cliente");
             cliente.IdCliente =int.Parse( Console.ReadLine());//toma valor int ID
             Console.WriteLine("\nIngrese el nombre ");
