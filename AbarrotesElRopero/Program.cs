@@ -16,12 +16,29 @@ namespace AbarrotesElRopero
             menu.MenuModulos();//SACA EL MENU DE TODOS LOS MODULOS EXISTENTES
             Console.WriteLine("\ningrese la opcion del modulo que desea utilizar :");
             ingreso = int.Parse(Console.ReadLine());
+
             Console.Clear();//LIMPIA PANTALLA
             
             do//ACA INGRESA A LA ELECCION DEL MODULO 
             {
+                switch (ingreso)
+                {
+                    case 1:
+                        Console.WriteLine("***************** Bienvenido al modulo de Clientes ************");
+                        menu.MenuCliente();//llama al menu del cliente
 
-                serviciocliente.CrearCliente();
+
+                        switch (switch_on)//Escoge entre las opciones del menu
+                        {
+                            case 1:
+                                break;
+                        }
+
+
+                        break;
+                }
+
+
 
 
             } while (ingreso!=0);

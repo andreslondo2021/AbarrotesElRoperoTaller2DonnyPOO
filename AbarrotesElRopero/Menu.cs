@@ -18,6 +18,7 @@ namespace AbarrotesElRopero
             Console.WriteLine("0. salir");
 
         }
+        
 
         public void MenuCliente()
         {

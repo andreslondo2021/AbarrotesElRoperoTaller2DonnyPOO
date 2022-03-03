@@ -24,14 +24,37 @@ namespace AbarrotesElRopero
             cliente.telefono = int.Parse(Console.ReadLine());// toma valor int Telefono
 
             listaCliente.Add(cliente);//aca se agrega el objeto a la lista
+          
             
         }
         public void BuscarCliente()
         {
             Console.WriteLine("\nIngrese el numero del Documento de la persona que desea buscar");
-            
-        
-        
+           string  validarDocumento =Console.ReadLine();//SE CREA VARIABLE PARA BUSCAR LA COINCIDENCIA DE DOCUMENTO string
+
+            // busqueda del objeto
+            var busquedaCliente =
+        from cliente in listaCliente
+        where cliente.Documento==validarDocumento
+        select new
+        {
+            nombre = cliente.Nombre,
+
+            documento = cliente.Documento,
+            direccion=cliente.Direccion,
+            telefono=cliente.telefono
+
+        };
+            //muestra los objetos que cumplan con la condicion
+            foreach (var cliente in busquedaCliente)
+            {
+                Console.WriteLine($"\nel nombre es : {cliente.nombre}");
+                Console.WriteLine($"\nel numero del documento es : {cliente.documento}");
+                Console.WriteLine($"\nla direccion es : {cliente.direccion}");
+                Console.WriteLine($"\nel telefono es : {cliente.telefono}");
+            }
+            //termina la busqueda del objeto
+
         }
 
 
