@@ -9,7 +9,8 @@ namespace AbarrotesElRopero
     internal class ServiciosCliente
     {//ACA VA TODAS LAS ACCIONES QUE TIENE EL CLIENTE COMO :CREAR , BUSCAR, ETC..
         Cliente cliente = new();
-        List<Cliente> listaCliente = new();
+        List<Cliente> listaCliente = new();//instancia lista tipo objeto
+
         public void CrearCliente()
         {
             Console.WriteLine("Ingrese el ID del cliente");
@@ -22,9 +23,13 @@ namespace AbarrotesElRopero
             cliente.Direccion = Console.ReadLine();
             Console.WriteLine("ingrese el telefono del cliente");
             cliente.telefono = int.Parse(Console.ReadLine());// toma valor int Telefono
-
+            
+            
             listaCliente.Add(cliente);//aca se agrega el objeto a la lista
-          
+             
+            Console.WriteLine("La cantidad de alumnos registrados son: " + listaCliente.Count);
+
+            listaCliente.ForEach(cliente => Console.WriteLine(cliente.Nombre));//CONSULTA LINQ
             
         }
         public void BuscarCliente()
@@ -54,8 +59,9 @@ namespace AbarrotesElRopero
                 Console.WriteLine($"\nel telefono es : {cliente.telefono}");
             }
             //termina la busqueda del objeto
-
+           
         }
+
 
 
 

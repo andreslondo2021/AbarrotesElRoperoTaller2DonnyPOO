@@ -15,8 +15,8 @@ namespace AbarrotesElRopero
             Console.WriteLine("3. Modulo ventas");
             Console.WriteLine("4. Modulo reportes");
             Console.WriteLine("5. Modulo configuracion");
-            Console.WriteLine("0. salir");
-
+            Console.WriteLine("\n0. salir");
+            Console.WriteLine("\ningrese la opcion del modulo que desea utilizar :");
         }
         
 
