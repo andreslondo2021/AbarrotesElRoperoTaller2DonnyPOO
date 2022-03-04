@@ -39,13 +39,17 @@ namespace AbarrotesElRopero
                         Console.Clear();
                         switch (ingreso)//Escoge entre las opciones del menu
                         {
-                            case 1:
+                            
+                            case 1://crear cliente
                                 serviciocliente.CrearCliente();
                                 
 
                                 break;
-                            case 2:
+                            case 2://Buscar cliente
                               serviciocliente.BuscarCliente();
+                                break;
+                            case 3: //Modificar cliente
+                                serviciocliente.ModificarCliente();
                                 break;
                         }
                        

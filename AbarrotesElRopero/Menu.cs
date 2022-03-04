@@ -11,10 +11,10 @@ namespace AbarrotesElRopero
         public void MenuModulos()
         {
             Console.WriteLine("1. Modulo clientes");
-            Console.WriteLine("2. Modulo productos");
-            Console.WriteLine("3. Modulo ventas");
-            Console.WriteLine("4. Modulo reportes");
-            Console.WriteLine("5. Modulo configuracion");
+            Console.WriteLine("2. Modulo productos");//oscar
+            Console.WriteLine("3. Modulo ventas");//anyela
+            Console.WriteLine("4. Modulo reportes");//luis
+            Console.WriteLine("5. Modulo configuracion");//todos
             Console.WriteLine("\n0. salir");
             Console.WriteLine("\ningrese la opcion del modulo que desea utilizar :");
         }
