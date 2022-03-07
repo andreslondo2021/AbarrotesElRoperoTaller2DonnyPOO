@@ -74,10 +74,10 @@ namespace AbarrotesElRopero
             validarDocumento = Console.ReadLine();//SE CREA VARIABLE PARA BUSCAR LA COINCIDENCIA DE DOCUMENTO string
 
             // busqueda del objeto
-            var busquedaCliente = ( //aca saldria con algo o simplemente NULL=vacio
+        var busquedaCliente = ( //aca saldria con algo o simplemente NULL=vacio
         from cliente in listaCliente
         where cliente.Documento == validarDocumento
-        select new
+        select new//se puede cambiar por el nombre de una clase creada para buscar(PODEMOS CREAR UNA CLASE PARA QUE NO QUEDE ANONIMA)
         {
             nombre = cliente.Nombre,
 
@@ -88,32 +88,18 @@ namespace AbarrotesElRopero
         }).FirstOrDefault();
 
             if (busquedaCliente == null) Console.WriteLine("el Documento no fue encontrado, verifique");
+            int indiceCliente = listaCliente.FindIndex(empleado => empleado.Documento.Equals(validarDocumento));//ESTE SIRVE PARA SACAR EL INDICE DE DONDE ESTA EL CLIENTE QUE CUMPLA CON LAS CONDICIONES
+            
             if (busquedaCliente != null)
             {
-               
-
-               
-                
-
-
-                //muestra los objetos que cumplan con la condicion
-                /*
-
-                foreach (var cliente in busquedaCliente)
-                {
+                //muestra lo que tiene el usuario encontrado
+                Console.WriteLine("el nombre es :"+busquedaCliente.nombre);
+                Console.WriteLine("el documento es :"+busquedaCliente.documento);
+                Console.WriteLine("la direccion es"+busquedaCliente.direccion);
+                Console.WriteLine("el telefono es "+ busquedaCliente.telefono);    
 
 
-                  Console.WriteLine($"\nel nombre es : {cliente.nombre}");
-                  Console.WriteLine($"\nel numero del documento es : {cliente.documento}");
-                  Console.WriteLine($"\nla direccion es : {cliente.direccion}");
-                  Console.WriteLine($"\nel telefono es : {cliente.telefono}");
-
-
-                var nombreEncontrado = cliente.nombre;
-                var direccionEncontrado = cliente.direccion;
-                var telefonoEncontrado = cliente.telefono;
-                Console.WriteLine(direccionEncontrado);
-                */
+                listaCliente[indiceCliente].Nombre=
             }
 
 
