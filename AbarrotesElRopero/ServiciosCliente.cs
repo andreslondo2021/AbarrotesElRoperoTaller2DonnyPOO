@@ -99,7 +99,7 @@ namespace AbarrotesElRopero
                 Console.WriteLine("el telefono es "+ busquedaCliente.telefono);    
 
 
-                listaCliente[indiceCliente].Nombre=
+                listaCliente[indiceCliente].Nombre=//CON ESTE SE CAMBIA EL NOMBRE DEL OBJETO ENCONTADO, ES DECIR DEL CLIENTE.
             }
 
 
