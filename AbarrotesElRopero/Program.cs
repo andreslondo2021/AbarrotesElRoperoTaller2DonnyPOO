@@ -51,6 +51,14 @@ namespace AbarrotesElRopero
                             case 3: //Modificar cliente
                                 serviciocliente.ModificarCliente();
                                 break;
+                            case 4:
+
+                                //aca se cambia el estado en true o false
+                                serviciocliente.CambiarEstadoCliente();
+                                break;
+                            case 5:
+                                serviciocliente.ListarClientes();
+                                break;
                         }
                        
 

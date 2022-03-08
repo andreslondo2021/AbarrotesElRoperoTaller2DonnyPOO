@@ -11,10 +11,10 @@ namespace AbarrotesElRopero
     {//ACA VA TODA LA INFORMACION DEL CLIENTE 
         public int IdCliente{ get; set;}
         public string Documento{ get; set; }
-        public string Nombre{get; set;}
+        public string NombreCliente{get; set;}
         public string Direccion{get; set;}
-        public int telefono{get; set;} //TELEFONO DEL CLIENTE IRA COMO INTEGER
-
+        public int Telefono{get; set;} //TELEFONO DEL CLIENTE IRA COMO INTEGER
+        public bool EstadoCliente { get; set; }
 
     }
 }

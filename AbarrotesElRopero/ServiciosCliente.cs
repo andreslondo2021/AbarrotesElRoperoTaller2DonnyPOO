@@ -18,20 +18,21 @@ namespace AbarrotesElRopero
             Console.WriteLine("Ingrese el ID del cliente");
             cliente.IdCliente = int.Parse(Console.ReadLine());//toma valor int ID
             Console.WriteLine("\nIngrese el nombre ");
-            cliente.Nombre = Console.ReadLine();
+            cliente.NombreCliente = Console.ReadLine();
             Console.WriteLine("\nIngrese el numero del documento ");
             cliente.Documento = Console.ReadLine();
             Console.WriteLine("\nIngrese la direccion");
             cliente.Direccion = Console.ReadLine();
             Console.WriteLine("ingrese el telefono del cliente");
-            cliente.telefono = int.Parse(Console.ReadLine());// toma valor int Telefono
+            cliente.Telefono = int.Parse(Console.ReadLine());// toma valor int Telefono
+            cliente.EstadoCliente = true;//agg el estado
 
 
             listaCliente.Add(cliente);//aca se agrega el objeto a la lista
 
             Console.WriteLine("La cantidad de alumnos registrados son: " + listaCliente.Count);
 
-            listaCliente.ForEach(cliente => Console.WriteLine(cliente.Nombre));//CONSULTA LINQ
+            listaCliente.ForEach(cliente => Console.WriteLine(cliente.NombreCliente));//CONSULTA LINQ
 
         }
         public void BuscarCliente()
@@ -48,11 +49,12 @@ namespace AbarrotesElRopero
         select new
         {
 
-            nombre = cliente.Nombre,
+            nombre = cliente.NombreCliente,
 
 
             direccion = cliente.Direccion,
-            telefono = cliente.telefono
+            telefono = cliente.Telefono
+           
 
         };
             //muestra los objetos que cumplan con la condicion
@@ -65,7 +67,7 @@ namespace AbarrotesElRopero
             }
 
 
-        }  //termina la busqueda del objeto
+        }  //termina la busqueda del objeto( cliente )
 
         public void ModificarCliente()
         {
@@ -74,18 +76,18 @@ namespace AbarrotesElRopero
             validarDocumento = Console.ReadLine();//SE CREA VARIABLE PARA BUSCAR LA COINCIDENCIA DE DOCUMENTO string
 
             // busqueda del objeto
-        var busquedaCliente = ( //aca saldria con algo o simplemente NULL=vacio
-        from cliente in listaCliente
-        where cliente.Documento == validarDocumento
-        select new//se puede cambiar por el nombre de una clase creada para buscar(PODEMOS CREAR UNA CLASE PARA QUE NO QUEDE ANONIMA)
-        {
-            nombre = cliente.Nombre,
+           var busquedaCliente = ( //aca saldria con algo o simplemente NULL=vacio
+           from cliente in listaCliente
+           where cliente.Documento == validarDocumento
+           select new//se puede cambiar por el nombre de una clase creada para buscar(PODEMOS CREAR UNA CLASE PARA QUE NO QUEDE ANONIMA)
+         {
+            nombre = cliente.NombreCliente,
 
             documento = cliente.Documento,
             direccion = cliente.Direccion,
-            telefono = cliente.telefono
+            telefono = cliente.Telefono
 
-        }).FirstOrDefault();
+          }).FirstOrDefault();
 
             if (busquedaCliente == null) Console.WriteLine("el Documento no fue encontrado, verifique");
             int indiceCliente = listaCliente.FindIndex(empleado => empleado.Documento.Equals(validarDocumento));//ESTE SIRVE PARA SACAR EL INDICE DE DONDE ESTA EL CLIENTE QUE CUMPLA CON LAS CONDICIONES
@@ -96,16 +98,71 @@ namespace AbarrotesElRopero
                 Console.WriteLine("el nombre es :"+busquedaCliente.nombre);
                 Console.WriteLine("el documento es :"+busquedaCliente.documento);
                 Console.WriteLine("la direccion es"+busquedaCliente.direccion);
-                Console.WriteLine("el telefono es "+ busquedaCliente.telefono);    
+                Console.WriteLine("el telefono es "+ busquedaCliente.telefono);
+                Console.Clear();
 
-
-                listaCliente[indiceCliente].Nombre=//CON ESTE SE CAMBIA EL NOMBRE DEL OBJETO ENCONTADO, ES DECIR DEL CLIENTE.
+                Console.WriteLine("MODIFIQUE LOS CAMPOS, no se modificara ni ID ni tampoco CC");
+                
+                Console.WriteLine("Ingrese el nombre");
+                var nombreModificado = Console.ReadLine();
+                Console.WriteLine("Ingrese la direccion");
+                var direccionModificado = Console.ReadLine();
+                Console.WriteLine("Ingrese el  telefono");
+                var telefonoModificado =int.Parse( Console.ReadLine());
+                listaCliente[indiceCliente].NombreCliente = nombreModificado;//CON ESTE SE CAMBIA LA PROPIEDAD DE NOMBRE EN EL OBJETO ENCONTADO, ES DECIR DEL CLIENTE.
+                listaCliente[indiceCliente].Direccion = direccionModificado;
+                listaCliente[indiceCliente].Telefono = telefonoModificado;
+                Console.Clear();
+                Console.WriteLine("Se Modifico con exito");
             }
 
+        }//Termina modificar objeto ( cliente)
+        public void CambiarEstadoCliente()
+        {
+            Console.WriteLine("\nIngrese el numero del Documento de la persona que desea buscar");
+            validarDocumento = Console.ReadLine();//SE CREA VARIABLE PARA BUSCAR LA COINCIDENCIA DE DOCUMENTO string
+
+            // busqueda del objeto
+            var busquedaCliente = ( //aca saldria con algo o simplemente NULL=vacio
+            from cliente in listaCliente
+            where cliente.Documento == validarDocumento
+            select new//se puede cambiar por el nombre de una clase creada para buscar(PODEMOS CREAR UNA CLASE PARA QUE NO QUEDE ANONIMA)
+           {
+                nombre = cliente.NombreCliente,
+
+                documento = cliente.Documento,
+                direccion = cliente.Direccion,
+                telefono = cliente.Telefono,
+                estado=cliente.EstadoCliente
+
+            }).FirstOrDefault();
+
+            if (busquedaCliente == null) Console.WriteLine("el Documento no fue encontrado, verifique");
+            int indiceCliente = listaCliente.FindIndex(empleado => empleado.Documento.Equals(validarDocumento));//ESTE SIRVE PARA SACAR EL INDICE DE DONDE ESTA EL CLIENTE QUE CUMPLA CON LAS CONDICIONES
+
+            if (busquedaCliente != null)
+            {
+                Console.WriteLine("cambiar de estado : true o false ");
+                bool estadoModificado = bool.Parse(Console.ReadLine());
+                listaCliente[indiceCliente].EstadoCliente = estadoModificado;
+                Console.WriteLine("el estado ha estado modificado exitosamente");
+                Console.WriteLine(listaCliente[indiceCliente].NombreCliente);
+                Console.WriteLine(listaCliente[indiceCliente].EstadoCliente);
 
 
+            }//Termina cambiar estado cliente
+            else Console.WriteLine("el estado no se ha podido modificar");
         }
-
+        public void ListarClientes()
+        {
+            foreach (var cliente in listaCliente)
+            {
+                Console.WriteLine($"Nombre < {cliente.NombreCliente} > " +
+                    $" Documento < {cliente.Documento} >" +
+                    $" Direccion < {cliente.Direccion} > " +
+                    $"  Estado < {cliente.EstadoCliente} > ");
+            }
+        }
 
     }
 }

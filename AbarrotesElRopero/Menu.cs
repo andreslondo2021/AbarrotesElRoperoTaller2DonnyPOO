@@ -26,7 +26,8 @@ namespace AbarrotesElRopero
             Console.WriteLine("1. Crear cliente");
             Console.WriteLine("2. Buscar cliente");
             Console.WriteLine("3. Modificar cliente");
-            Console.WriteLine("4. Eliminar cliente");
+            Console.WriteLine("4. Cambiar estado del  cliente");
+            Console.WriteLine("5. Listar clientes");
             Console.WriteLine("\n0. Volver al menu de modulos");
             Console.WriteLine("\nSeleccione la opcion que desea ejecutar");
 
