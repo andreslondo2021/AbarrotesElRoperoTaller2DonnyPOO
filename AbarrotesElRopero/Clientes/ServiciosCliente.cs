@@ -20,19 +20,35 @@ namespace AbarrotesElRopero
             Console.WriteLine("\nIngrese el nombre ");
             cliente.NombreCliente = Console.ReadLine();
             Console.WriteLine("\nIngrese el numero del documento ");
+            
             cliente.Documento = Console.ReadLine();
+            
+
             Console.WriteLine("\nIngrese la direccion");
             cliente.Direccion = Console.ReadLine();
             Console.WriteLine("ingrese el telefono del cliente");
             cliente.Telefono = int.Parse(Console.ReadLine());// toma valor int Telefono
             cliente.EstadoCliente = true;//agg el estado
 
-
             listaCliente.Add(cliente);//aca se agrega el objeto a la lista
+            /*
+             
+            //se tiene que hacer una consulta linq
+            var consultaValidarDoc = listaCliente.Where(
+                x=>x.Documento==cliente.Documento);
+            if (consultaValidarDoc ==null)
+            {
+
+                listaCliente.Add(cliente);//aca se agrega el objeto a la lista
+            }
+            else Console.WriteLine("no se puede agg el usuario porque la cedula ya existe");
+            */
+          //  listaCliente.All(x => x.Documento != cliente.Documento);
 
             Console.WriteLine("La cantidad de alumnos registrados son: " + listaCliente.Count);
 
             listaCliente.ForEach(cliente => Console.WriteLine(cliente.NombreCliente));//CONSULTA LINQ
+           
 
         }
         public void BuscarCliente()
@@ -54,7 +70,6 @@ namespace AbarrotesElRopero
 
             direccion = cliente.Direccion,
             telefono = cliente.Telefono
-           
 
         };
             //muestra los objetos que cumplan con la condicion
@@ -100,6 +115,7 @@ namespace AbarrotesElRopero
                 Console.WriteLine("la direccion es"+busquedaCliente.direccion);
                 Console.WriteLine("el telefono es "+ busquedaCliente.telefono);
                 Console.Clear();
+
 
                 Console.WriteLine("MODIFIQUE LOS CAMPOS, no se modificara ni ID ni tampoco CC");
                 
@@ -157,10 +173,14 @@ namespace AbarrotesElRopero
         {
             foreach (var cliente in listaCliente)
             {
-                Console.WriteLine($"Nombre < {cliente.NombreCliente} > " +
-                    $" Documento < {cliente.Documento} >" +
-                    $" Direccion < {cliente.Direccion} > " +
-                    $"  Estado < {cliente.EstadoCliente} > ");
+                if (cliente.EstadoCliente==true)
+                {
+                    Console.WriteLine($"Nombre < {cliente.NombreCliente} > " +
+                 $" Documento < {cliente.Documento} >" +
+                 $" Direccion < {cliente.Direccion} > " +
+                 $"  Estado < {cliente.EstadoCliente} > ");
+                }
+             
             }
         }
 

@@ -16,5 +16,7 @@ namespace AbarrotesElRopero
         public int Telefono{get; set;} //TELEFONO DEL CLIENTE IRA COMO INTEGER
         public bool EstadoCliente { get; set; }
 
+       
+
     }
 }

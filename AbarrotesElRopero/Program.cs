@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbarrotesElRopero.Productos;
+using System;
 using System.Collections.Generic;
 
 namespace AbarrotesElRopero
@@ -11,42 +12,35 @@ namespace AbarrotesElRopero
         {
             Menu menu = new();//SE INSTANCIA EL MENU PARA SACAR CUALQUIER MENU DEL OBJETO
             ServiciosCliente serviciocliente = new();//SE INSTANCIA LOS SERVICIOS DEL CLIENTE
+            ServiciosProductos servicioProducto = new();
 
-
-            
-
-
-
-
-            var nombreEmpresa = "ABARROTES EL ROPERO";
-            int ingreso = 0; //aca escoge el menu
-
-            Console.WriteLine($"******************* {nombreEmpresa} ******************");
-            Console.WriteLine("\nMODULOS DE LA EMPRESA :");
-            menu.MenuModulos();//SACA EL MENU DE TODOS LOS MODULOS EXISTENTES
-            ingreso = int.Parse(Console.ReadLine());//ingresa la opcion
-
-            Console.Clear();//LIMPIA PANTALLA
-            
+             var nombreEmpresa = " --------------- ABARROTES EL ROPERO ------------------\n";
+            int ingresoMod = 0; //aca escoge el menu
+            int ingresoMenu = 0;//escoge en el menu de cliente
             do//ACA INGRESA A LA ELECCION DEL MODULO 
             {
-                switch (ingreso)
+                Console.WriteLine(nombreEmpresa+"\n");
+                menu.MenuModulos();
+                ingresoMod = int.Parse(Console.ReadLine());
+                Console.Clear();
+                switch (ingresoMod)
                 {
                     case 1:
                         Console.WriteLine("***************** Bienvenido al modulo de Clientes ************");
                         menu.MenuCliente();//llama al menu del cliente
-                        ingreso = int.Parse(Console.ReadLine());//ingresa la opcion
+                        ingresoMenu= int.Parse(Console.ReadLine());//ingresa la opcion
                         Console.Clear();
-                        switch (ingreso)//Escoge entre las opciones del menu
+
+                        switch (ingresoMenu)//Escoge entre las opciones del menu
                         {
-                            
+
                             case 1://crear cliente
                                 serviciocliente.CrearCliente();
-                                
+
 
                                 break;
                             case 2://Buscar cliente
-                              serviciocliente.BuscarCliente();
+                                serviciocliente.BuscarCliente();
                                 break;
                             case 3: //Modificar cliente
                                 serviciocliente.ModificarCliente();
@@ -59,21 +53,43 @@ namespace AbarrotesElRopero
                             case 5:
                                 serviciocliente.ListarClientes();
                                 break;
-                        }
-                       
+                            case 0:
 
+                                break;
+                        }//cierra switch de cliente
+                        
                         break;
-                }
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine(nombreEmpresa + "\n");
+                        menu.MenuProducto();
+                        
+                        ingresoMenu = int.Parse(Console.ReadLine());
+                        switch (ingresoMenu)
+                        {
+                           case 1:
+                                servicioProducto.CrearProducto();
+                                
+                                break;
+                        }
+                        break;
+
+
+                }//cierra switch de modulos
+      
 
 
 
 
-            } while (ingreso!=0);
+
+            } while (ingresoMod != 0);
 
             Console.WriteLine("¡¡¡¡¡ QUE VUELVA PRONTO !!!");
 
 
             Console.ReadKey();
+
+
         }
     }
 }
