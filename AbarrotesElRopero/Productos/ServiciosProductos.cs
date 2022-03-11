@@ -28,6 +28,11 @@ namespace AbarrotesElRopero.Productos
             producto.CantidadProducto = int.Parse(Console.ReadLine());
             ListaProductos.Add(producto);
             Console.WriteLine("los productos agregados fueron : "+ListaProductos.Count);
+            foreach (var item in ListaProductos)
+            {
+                Console.WriteLine(item.IdProducto);
+                Console.WriteLine(  item.NombreProducto);
+            }
         }
 
     }
