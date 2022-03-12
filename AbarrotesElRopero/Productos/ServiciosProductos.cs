@@ -11,6 +11,7 @@ namespace AbarrotesElRopero.Productos
         List<Producto> ListaProductos = new();//Se instancia la lista tipo producto
 
         //Producto productoConstructor = new(01,"papa",2000,3);//LLAMANDO E INGRESANDO EL CONSTRUCTOR
+        BusquedaProductoDto busquedaProducto = new();
      
 
         public int AumentadorId=0;
@@ -33,7 +34,47 @@ namespace AbarrotesElRopero.Productos
                 Console.WriteLine(item.IdProducto);
                 Console.WriteLine(  item.NombreProducto);
             }
-        }
+        }//termina crear
+
+
+        public void BuscarProducto()
+        {
+            Console.Clear();
+            Console.WriteLine("Ingrese el ID Del producto");
+            int ValidarIdProducto = int.Parse(Console.ReadLine());
+            /*
+             CONSULTA JOIN
+            var busqueda = (from Producto in ListaProductos
+                            join producto in ListaProductos
+                            on Producto.IdProducto equals producto.IdProducto
+                            select new BusquedaProductoDto { IdProductoBusqueda = producto.IdProducto,
+                                NombreProductoBusqueda=producto.NombreProducto,
+                                PrecioProductoBusqueda=producto.PrecioProducto,
+                                CantidadProductoBusqueda=producto.CantidadProducto}).ToList();
+            */
+            var busqueda=from Producto in ListaProductos
+                   where Producto.IdProducto == ValidarIdProducto
+
+                   select new
+                   {
+
+                       Idproducto =Producto.IdProducto ,
+                       nombreProducto = Producto.NombreProducto,
+                        cantidadProducto= Producto.CantidadProducto,
+                        precioProducto=Producto.PrecioProducto
+
+                   };
+
+
+            foreach (var producto in busqueda)
+            {
+                Console.Clear();
+                Console.WriteLine($"\nID ( {producto.Idproducto} ) \nNombre  ({producto.nombreProducto} )" +
+                    $" \nCantidad ({producto.cantidadProducto})\nPrecio ({producto.precioProducto}) ");
+                
+            }
+        }//se termina el buscar
+
 
     }
 }

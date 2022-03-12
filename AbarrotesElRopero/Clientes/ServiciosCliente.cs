@@ -29,28 +29,30 @@ namespace AbarrotesElRopero
             Console.WriteLine("ingrese el telefono del cliente");
             cliente.Telefono = int.Parse(Console.ReadLine());// toma valor int Telefono
             cliente.EstadoCliente = true;//agg el estado
-
             listaCliente.Add(cliente);//aca se agrega el objeto a la lista
+
+
+
+            //se tiene que hacer una consulta linq
             /*
              
-            //se tiene que hacer una consulta linq
             var consultaValidarDoc = listaCliente.Where(
-                x=>x.Documento==cliente.Documento);
-            if (consultaValidarDoc ==null)
+                 x => x.Documento == cliente.Documento.FirstOrDefault());
+           if (consultaValidarDoc == null)
             {
-
-                listaCliente.Add(cliente);//aca se agrega el objeto a la lista
+              
             }
             else Console.WriteLine("no se puede agg el usuario porque la cedula ya existe");
             */
-          //  listaCliente.All(x => x.Documento != cliente.Documento);
+
+            //  listaCliente.All(x => x.Documento != cliente.Documento);
 
             Console.WriteLine("La cantidad de alumnos registrados son: " + listaCliente.Count);
 
             listaCliente.ForEach(cliente => Console.WriteLine(cliente.NombreCliente));//CONSULTA LINQ
            
 
-        }
+        }//fin de crear cliente
         public void BuscarCliente()
         {
             Console.Clear();

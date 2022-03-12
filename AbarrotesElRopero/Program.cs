@@ -68,8 +68,10 @@ namespace AbarrotesElRopero
                         switch (ingresoMenu)
                         {
                            case 1:
-                                servicioProducto.CrearProducto();
-                                
+                                servicioProducto.CrearProducto();  
+                              break;
+                            case 2:
+                                servicioProducto.BuscarProducto();
                                 break;
                         }
                         break;
