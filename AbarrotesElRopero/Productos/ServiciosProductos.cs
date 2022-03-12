@@ -27,6 +27,7 @@ namespace AbarrotesElRopero.Productos
             producto.PrecioProducto = double.Parse(Console.ReadLine());
             Console.WriteLine("ingrese la cantidad del producto");
             producto.CantidadProducto = int.Parse(Console.ReadLine());
+            producto.EstadoProducto = true;
             ListaProductos.Add(producto);
             Console.WriteLine("los productos agregados fueron : "+ListaProductos.Count);
             foreach (var item in ListaProductos)
@@ -57,12 +58,10 @@ namespace AbarrotesElRopero.Productos
 
                    select new
                    {
-
                        Idproducto =Producto.IdProducto ,
                        nombreProducto = Producto.NombreProducto,
                         cantidadProducto= Producto.CantidadProducto,
                         precioProducto=Producto.PrecioProducto
-
                    };
 
 
@@ -75,6 +74,82 @@ namespace AbarrotesElRopero.Productos
             }
         }//se termina el buscar
 
+        public void ModificarProducto()
+        {
+            Console.Clear();
+            Console.WriteLine("SE PODRA MODIFICAR TODOS LOS CAMPOS EXCEPTO EL ID \n");
+            Console.WriteLine("Ingrese el ID Del producto a modificar");
+            int ValidarIdProducto = int.Parse(Console.ReadLine());
+            var busqueda = (from Producto in ListaProductos
+                           where Producto.IdProducto == ValidarIdProducto
 
+                           select new
+                           {
+                               Idproducto = Producto.IdProducto,
+                               nombreProducto = Producto.NombreProducto,
+                               cantidadProducto = Producto.CantidadProducto,
+                               precioProducto = Producto.PrecioProducto
+                           }).FirstOrDefault();
+            if (busqueda == null) Console.WriteLine("El ID no fue encontrado, Verifique");
+            int  indiceProducto = ListaProductos.FindIndex(producto => producto.IdProducto.Equals(ValidarIdProducto));
+            if (busqueda !=null)
+            {
+                Console.WriteLine($"\nID ( {busqueda.Idproducto} ) \nNombre  ({busqueda.nombreProducto} )" +
+                   $" \nCantidad ({busqueda.cantidadProducto})\nPrecio ({busqueda.precioProducto}) \n");
+                Console.WriteLine("ingrese nombre del producto\n");
+                ListaProductos[indiceProducto].NombreProducto = Console.ReadLine();
+                Console.WriteLine("ingrese la cantidad nueva del producto\n");
+                ListaProductos[indiceProducto].CantidadProducto = int.Parse(Console.ReadLine());
+                Console.WriteLine("ingrese el nuevo precio\n");
+                ListaProductos[indiceProducto].PrecioProducto = double.Parse(Console.ReadLine());
+
+                Console.Clear();
+                Console.WriteLine("SE MODIFICO CON EXITO!");
+            }
+
+
+
+        }//Se termina el modificar producto
+
+        public void CambiarEstadoProducto()
+        {
+            Console.WriteLine("Ingrese el ID Del producto a modificar el estado");
+            int ValidarIdProducto = int.Parse(Console.ReadLine());
+            var busqueda = (from Producto in ListaProductos
+                            where Producto.IdProducto == ValidarIdProducto
+
+                            select new
+                            {
+                                Idproducto = Producto.IdProducto,
+                                nombreProducto = Producto.NombreProducto,
+                                cantidadProducto = Producto.CantidadProducto,
+                                precioProducto = Producto.PrecioProducto,
+                                EstadoProducto=Producto.EstadoProducto
+                            }).FirstOrDefault();
+            if (busqueda == null) Console.WriteLine("El ID no fue encontrado, Verifique");
+            int indiceProducto = ListaProductos.FindIndex(producto => producto.IdProducto.Equals(ValidarIdProducto));
+            if (busqueda != null)
+            {
+                Console.WriteLine($"\nID ( {busqueda.Idproducto} ) \nNombre  ({busqueda.nombreProducto} )" +
+                   $" \nCantidad ({busqueda.cantidadProducto})\nPrecio ({busqueda.precioProducto}) \nEstado ({busqueda.EstadoProducto}) ");
+                Console.WriteLine("ingrese el nuevo estado del producto\n");
+                ListaProductos[indiceProducto].EstadoProducto = bool.Parse(Console.ReadLine());
+
+                Console.WriteLine("estado Modificado con exito");
+            }
+
+
+        }//SE TERMINA CAMBIAR ESTADO
+        public void ListarProductos()
+        {
+            foreach (var producto in ListaProductos)
+            {
+                if (producto.EstadoProducto ==true)
+                {
+                    Console.WriteLine($"\nNombre  ({producto.NombreProducto} )" +
+                   $" \nCantidad ({producto.CantidadProducto})\nPrecio ({producto.PrecioProducto})");
+                }
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace AbarrotesElRopero
         public string NombreProducto { get; set; }
         public double PrecioProducto { get; set; }
         public int CantidadProducto { get; set; }
+        public bool EstadoProducto { get; set; }
 
       
          

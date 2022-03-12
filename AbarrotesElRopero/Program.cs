@@ -73,6 +73,16 @@ namespace AbarrotesElRopero
                             case 2:
                                 servicioProducto.BuscarProducto();
                                 break;
+                            case 3:
+                                servicioProducto.ModificarProducto();
+                                break;
+                            case 4:
+                                servicioProducto.CambiarEstadoProducto();
+                                break;
+                            case 5:
+                                servicioProducto.ListarProductos();
+                                break;
+                           
                         }
                         break;
 
