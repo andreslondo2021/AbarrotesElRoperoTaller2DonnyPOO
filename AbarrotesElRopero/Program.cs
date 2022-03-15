@@ -1,4 +1,5 @@
 ﻿using AbarrotesElRopero.Productos;
+using AbarrotesElRopero.Venta;
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +14,7 @@ namespace AbarrotesElRopero
             Menu menu = new();//SE INSTANCIA EL MENU PARA SACAR CUALQUIER MENU DEL OBJETO
             ServiciosCliente serviciocliente = new();//SE INSTANCIA LOS SERVICIOS DEL CLIENTE
             ServiciosProductos servicioProducto = new();
+            ServiciosVenta serviciosVenta = new();
 
              var nombreEmpresa = " --------------- ABARROTES EL ROPERO ------------------\n";
             int ingresoMod = 0; //aca escoge el menu
@@ -65,8 +67,10 @@ namespace AbarrotesElRopero
                         menu.MenuProducto();
                         
                         ingresoMenu = int.Parse(Console.ReadLine());
+                        Console.Clear();
                         switch (ingresoMenu)
                         {
+
                            case 1:
                                 servicioProducto.CrearProducto();  
                               break;
@@ -83,6 +87,30 @@ namespace AbarrotesElRopero
                                 servicioProducto.ListarProductos();
                                 break;
                            
+                        }
+                        break;//CIERRA PRODUCTOS
+                    case 3:
+                        Console.Clear();
+                        Console.WriteLine(nombreEmpresa + "\n");
+                        menu.MenuVenta();
+
+                        ingresoMenu = int.Parse(Console.ReadLine());
+
+                        switch (ingresoMenu)
+                        {
+
+                            case 1:
+                                //crear venta
+                                serviciosVenta.CrearVenta();
+                                
+                                break;
+                            case 2:
+                                //Buscar venta
+                                serviciosVenta.BuscarVenta();
+                                break;
+                            case 3:
+                                serviciosVenta.ListarVenta();
+                                break;
                         }
                         break;
 

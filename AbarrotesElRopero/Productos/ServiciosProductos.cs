@@ -17,6 +17,7 @@ namespace AbarrotesElRopero.Productos
         public int AumentadorId=0;
         public void CrearProducto()
         {
+           
             Producto producto = new();
             AumentadorId++;
             producto.IdProducto = AumentadorId;
@@ -29,6 +30,8 @@ namespace AbarrotesElRopero.Productos
             producto.CantidadProducto = int.Parse(Console.ReadLine());
             producto.EstadoProducto = true;
             ListaProductos.Add(producto);
+
+
             Console.WriteLine("los productos agregados fueron : "+ListaProductos.Count);
             foreach (var item in ListaProductos)
             {

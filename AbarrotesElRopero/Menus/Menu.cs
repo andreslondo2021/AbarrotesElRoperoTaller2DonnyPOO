@@ -43,6 +43,15 @@ namespace AbarrotesElRopero
             Console.WriteLine("\n0. Volver al menu de modulos");
             Console.WriteLine("\nSeleccione la opcion que desea ejecutar");
         }
+
+        public void MenuVenta()
+        {
+            Console.WriteLine("\n 1.Crear venta");
+            Console.WriteLine("\n 2.buscar venta");
+            Console.WriteLine("\n 3.listar venta");
+            Console.WriteLine("\n 0.Volver al menu de modulos");
+            Console.WriteLine("\nSeleccione la opcion que desea ejecutar");
+        }
        
       
 

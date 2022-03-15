@@ -20,7 +20,7 @@ namespace AbarrotesElRopero
             Console.WriteLine("\nIngrese el nombre ");
             cliente.NombreCliente = Console.ReadLine();
             Console.WriteLine("\nIngrese el numero del documento ");
-            
+          
             cliente.Documento = Console.ReadLine();
             
 
@@ -29,23 +29,11 @@ namespace AbarrotesElRopero
             Console.WriteLine("ingrese el telefono del cliente");
             cliente.Telefono = int.Parse(Console.ReadLine());// toma valor int Telefono
             cliente.EstadoCliente = true;//agg el estado
-            listaCliente.Add(cliente);//aca se agrega el objeto a la lista
+           
+            var consulta = listaCliente.Where(persona => persona.Documento.Equals(cliente.Documento)).FirstOrDefault();
 
-
-
-            //se tiene que hacer una consulta linq
-            /*
-             
-            var consultaValidarDoc = listaCliente.Where(
-                 x => x.Documento == cliente.Documento.FirstOrDefault());
-           if (consultaValidarDoc == null)
-            {
-              
-            }
-            else Console.WriteLine("no se puede agg el usuario porque la cedula ya existe");
-            */
-
-            //  listaCliente.All(x => x.Documento != cliente.Documento);
+            if (consulta == null) listaCliente.Add(cliente);//aca se agrega el objeto a la lista
+            else Console.WriteLine("el usuario ya existe con ese documento");
 
             Console.WriteLine("La cantidad de alumnos registrados son: " + listaCliente.Count);
 
